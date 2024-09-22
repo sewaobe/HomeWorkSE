@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Schedule Form</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: 'Times New Roman', Times, serif;
+                background-color: #f2f2f2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                color: #5f9ea0;
+            }
+            .form-container {
+                background-color: #ffffff;
+                padding: 25px;
+                border-radius: 8px;
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+                max-width: 500px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+            h2 {
+                margin-bottom: 20px;
+                text-align: center;
+                color: #5f9ea0;
+            }
+            label {
+                font-weight: bold;
+                color: #5f9ea0;
+            }
+            .form-group {
+                margin-bottom: 15px;
+            }
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                color: #5f9ea0;
+            }
+
+            .time-group {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+
+            .time-group div input {
+                width: 100%;
+                max-width: 220px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                color: #5f9ea0;
+            }
+            input[type='range'] {
+                appearance: none;
+                width: 100%;
+                height: 16px;
+                padding: 12px 0;
+                background: #ddd;
+                outline: none;
+                border-radius: 8px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                background-image: linear-gradient(to right, #5f9ea0, #5f9ea0);
+                background-size: 0% 100%;
+                background-repeat: no-repeat;
+                transition: background-size 0.3s ease-in-out;
+            }
+
+            input[type='range']::-webkit-slider-thumb {
+                appearance: none;
+                width: 24px;
+                height: 24px;
+                background: #5f9ea0;
+                cursor: pointer;
+                border-radius: 50%;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            }
+
+            input[type='range']::-moz-range-thumb {
+                width: 24px;
+                height: 24px;
+                background: #5f9ea0;
+                cursor: pointer;
+                border-radius: 50%;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            }
+            .progress-display {
+                text-align: center;
+                margin-bottom: 15px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .button-group {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            button {
+                padding: 12px;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 16px;
+                cursor: pointer;
+                width: 30%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .btn-add {
+                background-color: #4caf50;
+            }
+            .btn-cancel {
+                background-color: #f44336;
+            }
+            .btn-reset {
+                background-color: #ffa500;
+            }
+            button:hover {
+                opacity: 0.8;
+            }
+
+            select {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="form-container">
+            <form action="#" method="POST">
+                <h2>WORKING CALENDAR</h2>
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required />
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="4"
+                        required
+                    ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="assignee">Assignee Name:</label>
+                    <select name="assigneeName" id="assigneeName">
+                        <option value="assigneeName__select">
+                            Vui lòng chọn người cần được giao nhiệm vụ
+                        </option>
+                        <option value="assigneeName__Bao">Bao</option>
+                        <option value="assigneeName__Thanh">Thanh</option>
+                        <option value="assigneeName__Hanh">Hanh</option>
+                    </select>
+                </div>
+                <div class="time-group">
+                    <div>
+                        <label for="start-time">Start Time:</label>
+                        <input
+                            type="datetime-local"
+                            id="start-time"
+                            name="start-time"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label for="end-time">End Time:</label>
+                        <input
+                            type="datetime-local"
+                            id="end-time"
+                            name="end-time"
+                            required
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" required>
+                        <option value="not-started">Not Started</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="progress">Progress:</label>
+                    <input
+                        type="range"
+                        id="progress"
+                        name="progress"
+                        min="0"
+                        max="100"
+                        value="0"
+                        oninput="updateProgressDisplay(this.value)"
+                    />
+                    <div id="progress-display" class="progress-display">0%</div>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn-add">Add</button>
+                    <button type="reset" class="btn-reset">Reset</button>
+                    <button type="button" class="btn-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <script>
+            function updateProgressDisplay(value) {
+                document.getElementById('progress-display').textContent =
+                    value + '%';
+                var slider = document.getElementById('progress');
+                slider.style.backgroundSize = value + '% 100%';
+            }
+        </script>
+    </body>
+</html>
